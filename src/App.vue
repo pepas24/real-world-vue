@@ -16,7 +16,7 @@
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <HelloWorld />
     </v-content>
   </v-app>
 </template>
@@ -29,7 +29,7 @@ export default {
   components: {
     HelloWorld
   },
-  data () {
+  data() {
     return {
       //
     }
