@@ -6,29 +6,24 @@
         <span class="font-weight-light">MATERIAL DESIGN</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat :to="{ name: 'event-list' }" exact>Event List</v-btn>
+        <v-btn flat :to="{ name: 'event-show' }">Event show</v-btn>
+        <v-btn flat :to="{ name: 'event-create' }">Create</v-btn>
+      </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
-      <HelloWorld />
+      <v-layout py-5 px-3>
+        <router-view />
+      </v-layout>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data() {
     return {
       //
@@ -36,3 +31,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.main-container {
+  padding: 30px;
+}
+</style>
