@@ -1,5 +1,7 @@
 # real-world-vue
 
+Code for [Real World Vue](https://vuemastery.com/courses/real-world-vue-js/real-world-intro) from [Vue Mastery](https://vuemastery.com/) course.
+
 ## Project setup
 ```
 npm install
