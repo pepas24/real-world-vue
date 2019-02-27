@@ -7,6 +7,7 @@ import EventCreate from './views/EventCreate'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history', // The production server needs to be correctly configurated
   routes: [
     {
       path: '/',
@@ -14,19 +15,15 @@ export default new Router({
       component: EventList
     },
     {
-      path: '/event-show',
+      path: '/event/:id',
       name: 'event-show',
-      component: EventShow
+      component: EventShow,
+      props: true
     },
     {
-      path: '/event-create',
+      path: '/event/create',
       name: 'event-create',
-      component: EventCreate,
-      alias: '/create' // Redirect as alias don't change the url
-    },
-    {
-      path: '/create',
-      redirect: { name: 'event-create' } // Redirect changing the url
+      component: EventCreate
     }
   ]
 })

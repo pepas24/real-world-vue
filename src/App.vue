@@ -8,16 +8,13 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat :to="{ name: 'event-list' }" exact>Event List</v-btn>
-        <v-btn flat :to="{ name: 'event-show' }">Event show</v-btn>
-        <v-btn flat :to="{ name: 'event-create' }">Create</v-btn>
+        <v-btn flat :to="{ name: 'event-create' }" exact>Create</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
-    <v-content>
-      <v-layout py-5 px-3>
-        <router-view />
-      </v-layout>
-    </v-content>
+    <div style="margin-top: 80px">
+      <router-view />
+    </div>
   </v-app>
 </template>
 
