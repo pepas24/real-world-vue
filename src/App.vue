@@ -1,26 +1,18 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat :to="{ name: 'event-list' }" exact>Event List</v-btn>
-        <v-btn flat :to="{ name: 'event-create' }" exact>Create</v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-
-    <div style="margin-top: 80px">
-      <router-view />
-    </div>
+    <NavBar />
+    <router-view class="main-container" />
   </v-app>
 </template>
 
 <script>
+import NavBar from './components/NavBar'
+
 export default {
   name: 'App',
+  components: {
+    NavBar
+  },
   data() {
     return {
       //
@@ -31,6 +23,9 @@ export default {
 
 <style>
 .main-container {
-  padding: 30px;
+  max-width: 620px;
+  margin-top: 68px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
