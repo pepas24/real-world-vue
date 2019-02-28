@@ -5,17 +5,18 @@
     </v-layout>
     <v-layout row>
       <v-flex xs-12>
-        <v-card>
-          <v-card-title primary-title>
-            <div class="headline">Event #1</div>
-          </v-card-title>
-          <v-card-action>
-            <v-btn flat :to="{ name: 'event-show', params: { id: '1' } }">
-              Show Event
-            </v-btn>
-          </v-card-action>
-        </v-card>
+        <EventCard id="1" />
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
+<script>
+import EventCard from '../components/EventCard'
+
+export default {
+  components: {
+    EventCard
+  }
+}
+</script>
