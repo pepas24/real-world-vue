@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="mb-4">
     <v-layout>
       <v-card-title primary-title>
         <v-flex>
@@ -17,7 +17,7 @@
     </v-layout>
     <v-divider></v-divider>
     <v-card-actions>
-      <v-btn flat :to="{ name: 'event-show', params: { id: id } }">
+      <v-btn flat :to="{ name: 'event-show', params: { id: event.id } }">
         Show Event
       </v-btn>
     </v-card-actions>
@@ -27,29 +27,8 @@
 <script>
 export default {
   name: 'EventCard',
-  props: ['id'],
-  data() {
-    return {
-      event: {
-        title: 'Vue Component Styling',
-        date: 'Tues Feb 28, 2019',
-        time: '13:30',
-        attendees: [
-          {
-            id: 'assf23124',
-            name: 'Paul Smith'
-          },
-          {
-            id: 'were34232',
-            name: 'Nathaly Blade'
-          },
-          {
-            id: 'trwe23452',
-            name: 'Jake Auster'
-          }
-        ]
-      }
-    }
+  props: {
+    event: Object
   }
 }
 </script>
