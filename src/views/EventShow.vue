@@ -9,7 +9,7 @@
         <v-layout row wrap>
           <v-flex xs12>
             <div class="subheading mb-2">
-              Organized by {{ event.organizer }}
+              Organized by {{ event.organizer ? event.organizer.name : '' }}
             </div>
             <div class="headline mb-2">{{ event.description }}</div>
             <v-divider class="mb-3"></v-divider>
@@ -49,6 +49,7 @@
 import EventService from '@/services/EventService'
 
 export default {
+  name: 'EventShow',
   props: ['id'],
   data() {
     return {
