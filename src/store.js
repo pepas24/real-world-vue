@@ -23,7 +23,11 @@ export default new Vuex.Store({
     event: {},
     totalEvents: 0
   },
-  getters: {},
+  getters: {
+    getEventById: state => id => {
+      return state.events.find(event => event.id === id)
+    }
+  },
   mutations: {
     ADD_EVENT(state, event) {
       state.events.push(event)
@@ -54,14 +58,19 @@ export default new Vuex.Store({
           console.log('There was an error: ' + error)
         })
     },
-    fetchEvent({ commit }, id) {
-      EventService.getEvent(id)
-        .then(response => {
-          commit('SET_EVENT', response.data)
-        })
-        .catch(error => {
-          console.error('There was an error:', error)
-        })
+    fetchEvent({ commit, getters }, id) {
+      let event = getters.getEventById(id)
+      if (event) {
+        commit('SET_EVENT', event)
+      } else {
+        EventService.getEvent(id)
+          .then(response => {
+            commit('SET_EVENT', response.data)
+          })
+          .catch(error => {
+            console.error('There was an error:', error)
+          })
+      }
     }
   }
 })
