@@ -8,6 +8,16 @@
         <EventCard v-for="event in events" :key="event.id" :event="event" />
       </v-flex>
     </v-layout>
+    <v-layout row justify-center>
+      <v-pagination
+        :value="page"
+        @input="goToPage"
+        @previous="page - 1"
+        @next="page + 1"
+        :length="pagination"
+        circle
+      ></v-pagination>
+    </v-layout>
   </v-container>
 </template>
 
@@ -19,9 +29,30 @@ export default {
   components: {
     EventCard
   },
-  created() {
-    this.$store.dispatch('fetchEvents')
+  data() {
+    return {
+      perPage: 3
+    }
   },
-  computed: mapState(['events'])
+  created() {
+    this.$store.dispatch('fetchEvents', {
+      page: this.page,
+      perPage: this.perPage
+    })
+  },
+  methods: {
+    goToPage(payload) {
+      this.$router.push({ name: 'event-list', query: { page: payload } })
+    }
+  },
+  computed: {
+    page() {
+      return parseInt(this.$route.query.page) || 1
+    },
+    pagination() {
+      return parseInt((this.totalEvents / this.perPage).toFixed(0))
+    },
+    ...mapState(['events', 'totalEvents'])
+  }
 }
 </script>
