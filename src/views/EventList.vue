@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout row>
-      <h1 class="display-1 mb-3">Event Listing</h1>
+      <h1 class="display-1 mb-3">Events for {{ user.user.name }}</h1>
     </v-layout>
     <v-layout row>
       <v-flex xs-12>
@@ -52,7 +52,7 @@ export default {
     pagination() {
       return parseInt((this.totalEvents / this.perPage).toFixed(0))
     },
-    ...mapState(['events', 'totalEvents'])
+    ...mapState(['events', 'totalEvents', 'user'])
   }
 }
 </script>

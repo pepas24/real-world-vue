@@ -143,7 +143,7 @@ export default {
       })
     },
     createFreshEventObject() {
-      const user = this.$store.state.user
+      const user = this.$store.state.user.user
       const eventId = Math.floor(Math.random() * 1000000)
 
       return {
