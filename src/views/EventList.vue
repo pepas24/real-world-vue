@@ -5,7 +5,11 @@
     </v-layout>
     <v-layout row>
       <v-flex xs-12>
-        <EventCard v-for="event in events" :key="event.id" :event="event" />
+        <EventCard
+          v-for="event in event.events"
+          :key="event.id"
+          :event="event"
+        />
       </v-flex>
     </v-layout>
     <v-layout row justify-center>
@@ -35,7 +39,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('fetchEvents', {
+    this.$store.dispatch('event/fetchEvents', {
       page: this.page,
       perPage: this.perPage
     })
@@ -50,9 +54,9 @@ export default {
       return parseInt(this.$route.query.page) || 1
     },
     pagination() {
-      return parseInt((this.totalEvents / this.perPage).toFixed(0))
+      return parseInt((this.event.totalEvents / this.perPage).toFixed(0))
     },
-    ...mapState(['events', 'totalEvents', 'user'])
+    ...mapState(['event', 'user'])
   }
 }
 </script>
